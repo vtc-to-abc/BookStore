@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Book;
+@{
+    ViewBag.Title = "Book Relationship";
+}
+<h2> Create Relationship @Model.book_id</h2>
+
+<form asp-action="CreateRelationship">
+   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       <div class="form-group">
+                        <label asp-for="@Model.book_id" class="control-label"></label>
+                        <input asp-for="@Model.book_id" name="bid" id="bid" class="form-control" readonly/>
+                        <span asp-validation-for="@Model.book_id" class="text-danger"></span>
+      </div>
+        <div class="form-group">
+            <ul>
+                @foreach(var auth in ViewBag.Authors)
+                {
+                         
+                    <li>
+                        
+                        <input type="checkbox" name="authid" id="authid" value="@auth.author_id"/> @auth.pseudonym</li>
+                }
+            </ul>
+
+        </div>
+         <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-outline-success float-right"/>
+            <a class="btn btn-outline-secondary" asp-action="Index"> Cancel</a>
+         </div>
+</form>

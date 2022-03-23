@@ -1,0 +1,42 @@
+﻿@model IEnumerable<bookstore.Models.Category>;
+
+@*   *@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.category_id)</th>
+                    <th>@Html.DisplayNameFor(model => model.category_name)</th>
+                </tr>
+            </thead>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.category_id)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.category_name)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="Category" asp-action="Edit" asp-route-id="@item.category_id"><i class ="bi bi-pencil-square"></i>Edit</a>
+                            <a class="btn btn-outline-info" asp-controller="Category" asp-action="Details" asp-route-id="@item.category_id"><i class ="bi bi-pencil-square"></i> Details</a>
+                            <a class= "btn btn-danger text-white" asp-controller="Category" asp-action="Delete" asp-route-id="@item.category_id"><i class ="bi bi-pencil-square"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-white">
+    <a asp-controller="Category" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
+
+</div>

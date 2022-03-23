@@ -1,0 +1,49 @@
+﻿@model bookstore.ViewModels.RentOrderViewModel;
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class = "row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1> Order @Model.Id</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+           
+                    <div class="form-group">
+                        <label asp-for="Renter" class="control-label"></label>
+                        <input asp-for="Renter" class="form-control" readonly />
+                        <span asp-validation-for="Renter" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="book" class="control-label"></label>
+                        <input asp-for="book" class="form-control" readonly/>
+                        <span asp-validation-for="book" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RentDate" class="control-label"></label>
+                        <input asp-for="RentDate" class="form-control" readonly/>
+                        <span asp-validation-for="RentDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ReturnDate" class="control-label"></label>
+                        <input asp-for="ReturnDate" class="form-control" readonly/>
+                        <span asp-validation-for="ReturnDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RentStatus" class="control-label"></label>
+                        <input asp-for="RentStatus" class="form-control" />
+                        <span asp-validation-for="RentStatus" class="text-danger"></span>
+                    </div>
+
+                  <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                      <a class="btn btn-outline-secondary" asp-action="Index"> Show All</a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

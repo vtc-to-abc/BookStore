@@ -1,0 +1,58 @@
+﻿@model IEnumerable<bookstore.ViewModels.RentOrderViewModel>;
+
+@*   *@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.Id)</th>
+                    <th>@Html.DisplayNameFor(model => model.Renter)</th>
+                    <th>@Html.DisplayNameFor(model => model.book)</th>
+                    <th>@Html.DisplayNameFor(model => model.RentDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.ReturnDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.RentStatus)</th>
+
+                </tr>
+            </thead>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.Renter.renter_name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.book.book_title)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.RentDate)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.ReturnDate)
+                        </td>
+                         <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.RentStatus)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="rentorder" asp-action="Edit" asp-route-id="@item.Id"><i class ="bi bi-pencil-square"></i>Edit</a>
+                            <a class="btn btn-outline-info" asp-controller="rentorder" asp-action="Details" asp-route-id="@item.Id"><i class ="bi bi-pencil-square"></i> Details</a>
+                            <a class= "btn btn-danger text-white" asp-controller="rentorder" asp-action="Delete" asp-route-id="@item.Id"><i class ="bi bi-pencil-square"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+        </table>
+    </div>
+</div>
+
+<div class="text-white">
+    <a asp-controller="Renter" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
+
+</div>

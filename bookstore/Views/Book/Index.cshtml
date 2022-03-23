@@ -1,0 +1,50 @@
+﻿@model IEnumerable<bookstore.Models.Book>;
+
+@*   *@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.book_id)</th>
+                    <th>@Html.DisplayNameFor(model => model.book_title)</th>
+                    <th>@Html.DisplayNameFor(model => model.stored_copies)</th>
+                    <th>@Html.DisplayNameFor(model => model.current_rent)</th>
+                </tr>
+            </thead>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.book_id)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.book_title)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.stored_copies)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem=> item.current_rent)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="Book" asp-action="Edit" asp-route-id="@item.book_id"><i class ="bi bi-pencil-square"></i>Edit</a>
+                            <a class="btn btn-outline-info" asp-controller="Book" asp-action="Details" asp-route-id="@item.book_id"><i class ="bi bi-pencil-square"></i> Details</a>
+                            <a class= "btn btn-danger text-white" asp-controller="Book" asp-action="Delete" asp-route-id="@item.book_id"><i class ="bi bi-pencil-square"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+           
+        </table>
+    </div>
+</div>
+
+<div class="text-white">
+    <a asp-controller="Book" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Add New</a>
+
+</div>
